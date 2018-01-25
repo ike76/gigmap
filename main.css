@@ -1,0 +1,35 @@
+/*
+font-family: 'Fjalla One', sans-serif;
+font-family: 'Cantarell', sans-serif;
+*/
+.gig-list {
+	list-style: none;
+}
+.gig-list {
+	padding-left: 0;
+}
+.gig-list h4 {
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 18px;
+	color: #505050;
+	margin-bottom: 2px;
+}
+.gig-list hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid lightgrey;
+    margin: 2px 0;
+    padding: 0; 
+}
+.gig-list p{
+	font-family: 'Cantarell', sans-serif;
+	font-size: 12px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.band-name{
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 30px;
+}
