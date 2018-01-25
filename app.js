@@ -1,3 +1,5 @@
+
+
 $(function(){
 
 // class GigObject {
@@ -24,13 +26,9 @@ $('.artistSearch').on('submit', function(event){
 })
 
 function handleSearch(aq){
-	setHeader(aq)
 	callBandsInTown(aq);
 }
 
-function setHeader(aq){
-	$('h1.js-artist-query').html(aq); // this should come from the results, not the query
-}
 
 function callBandsInTown(aq){
 	let app_id = 'iketown';
@@ -38,15 +36,13 @@ function callBandsInTown(aq){
 	$.getJSON(biturl, {app_id: app_id}, function(json, textStatus) {
 			console.log(json)
 			displayGigsList(json)
+			createMap(json);
 	});
 }
 
-// function makeGigObjects(json){
-// 	let gigArray = json.map(gig => new GigObject(gig))
-// 	console.log(gigArray);
-
-// }
 function displayGigsList(json){
+
+	$('h2.band-name').html(json[0].lineup[0])
 	let $list = $('ul.gig-list');
 	json.forEach(gig=>{
 		$list.append(formatGig(gig));
@@ -69,11 +65,37 @@ function formatGig(gigObj){
 }
 
 
+function createMap(json){
+	var map = new GMaps({
+	      el: '#map',
+	      lat: -12.043333,
+	      lng: -77.028333
+	    });
+	let latLngArray = makeLatLngArray(json);
+	map.fitLatLngBounds(latLngArray); // make map the right size
 
+	json.forEach(gig=> addGigToMap(gig));
 
+	function drawPolyline(json){
 
-
-
+	}
+	function makeLatLngArray(json){
+		let latLngArray = [];
+		json.forEach(gig=> latLngArray.push({lat: Number(gig.venue.latitude), lng: Number(gig.venue.longitude) }))
+		return latLngArray;
+	}
+	
+	function addGigToMap(gig){
+		map.addMarker({
+			lat: gig.venue.latitude ,
+			lng:  gig.venue.longitude,
+			title: gig.venue.name ,
+			click: function(e) {
+				alert('you clicked it');
+			}
+		})
+	}
+}
 
 
 //end jQuery call

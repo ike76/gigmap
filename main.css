@@ -33,3 +33,6 @@ font-family: 'Cantarell', sans-serif;
 	font-family: 'Fjalla One', sans-serif;
 	font-size: 30px;
 }
+#map {
+	height: 600px;
+}
