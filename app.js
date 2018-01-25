@@ -47,22 +47,24 @@ function callBandsInTown(aq){
 
 // }
 function displayGigsList(json){
-	let $list = $(ul.gig-list);
+	let $list = $('ul.gig-list');
 	json.forEach(gig=>{
 		$list.append(formatGig(gig));
 	})
 }
 
-formatGig(gigObj){
+function formatGig(gigObj){
 	let cityName = gigObj.venue.city;
 	let state = gigObj.venue.region;
 	let venueName = gigObj.venue.name;
+	let date = moment(gigObj.datetime);
+	let country = (gigObj.venue.country === "United States") ? "" : `, ${gigObj.venue.country}`;
 
 	return `<li>
-				<h4>${cityName}, ${state}</h4>
+				<h4>${cityName}, ${state}${country}</h4>
 				<hr>
 				<p>${venueName}</p>
-				<p>Jan 25th, 2018 7:30pm</p>
+				<p>${date.format('MMM Do, YYYY | h:mm a')}</p>
 			</li>`
 }
 
