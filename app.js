@@ -44,6 +44,7 @@ function displayGigsList(json){
 
 	$('h2.band-name').html(json[0].lineup[0])
 	let $list = $('ul.gig-list');
+	$list.html(''); // empty list of prev search results.
 	json.forEach(gig=>{
 		$list.append(formatGig(gig));
 	})
@@ -62,7 +63,7 @@ function formatGig(gigObj){
 				<p>${venueName}</p>
 				<p>${date.format('MMM Do, YYYY | h:mm a')}</p>
 			</li>`
-}
+};
 
 
 function createMap(json){
