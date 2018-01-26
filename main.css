@@ -13,6 +13,12 @@ font-family: 'Cantarell', sans-serif;
 	font-size: 18px;
 	color: #505050;
 	margin-bottom: 2px;
+	transition: all .5s;
+}
+.gig-list h4:hover {
+	/*background-color: red;*/
+	color: red;
+	/*font-size: 19px;*/
 }
 .gig-list hr {
     display: block;
@@ -28,6 +34,14 @@ font-family: 'Cantarell', sans-serif;
 	margin-top: 0;
 	margin-bottom: 0;
 }
+.gig-list a {
+	text-decoration: none;
+}
+.gig-list li{
+	transition: color 0.5s ease;
+
+}
+
 
 .band-name{
 	font-family: 'Fjalla One', sans-serif;
@@ -37,7 +51,14 @@ font-family: 'Cantarell', sans-serif;
 	positon: relative;
 }
 #map {
-	height: 600px;
+	height: 100%;
+	/*width: 100%;*/
 	/*position: fixed;*/
 	/*top: 0;*/
+}
+.fixed-map {
+	position: fixed;
+	height: 500px;
+	width: 800px;
+	padding: 10px;
 }
