@@ -65,38 +65,73 @@ function formatGig(gigObj){
 			</li>`
 };
 
-
+let map;
 function createMap(json){
-	var map = new GMaps({
-	      el: '#map',
-	      lat: -12.043333,
-	      lng: -77.028333
-	    });
+	let uluru = {lat: -25.363, lng: 131.044};
+	map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 4,
+		center: uluru
+	});
+	let marker = new google.maps.Marker({
+		position: uluru,
+		map: map
+	})
 	let latLngArray = makeLatLngArray(json);
-	map.fitLatLngBounds(latLngArray); // make map the right size
-
-	json.forEach(gig=> addGigToMap(gig));
-
-	function drawPolyline(json){
-
-	}
 	function makeLatLngArray(json){
 		let latLngArray = [];
 		json.forEach(gig=> latLngArray.push({lat: Number(gig.venue.latitude), lng: Number(gig.venue.longitude) }))
 		return latLngArray;
 	}
+	// map.fitLatLngBounds(latLngArray); // make map the right size
+
+	// json.forEach(gig=> addGigToMap(gig));
+
+	// function drawPolyline(json){
+
+	// }
 	
-	function addGigToMap(gig){
-		map.addMarker({
-			lat: gig.venue.latitude ,
-			lng:  gig.venue.longitude,
-			title: gig.venue.name ,
-			click: function(e) {
-				alert('you clicked it');
-			}
-		})
-	}
+	// function addGigToMap(gig){
+	// 	map.addMarker({
+	// 		lat: gig.venue.latitude ,
+	// 		lng:  gig.venue.longitude,
+	// 		title: gig.venue.name ,
+	// 		click: function(e) {
+	// 			alert('you clicked it');
+	// 		}
+	// 	})
+	// }
 }
+// function createMap(json){
+// 	var map = new GMaps({
+// 	      el: '#map',
+// 	      lat: -12.043333,
+// 	      lng: -77.028333
+// 	    });
+// 	let latLngArray = makeLatLngArray(json);
+// 	map.fitLatLngBounds(latLngArray); // make map the right size
+
+// 	json.forEach(gig=> addGigToMap(gig));
+
+// 	function drawPolyline(json){
+
+// 	}
+// 	function makeLatLngArray(json){
+// 		let latLngArray = [];
+// 		json.forEach(gig=> latLngArray.push({lat: Number(gig.venue.latitude), lng: Number(gig.venue.longitude) }))
+// 		return latLngArray;
+// 	}
+	
+// 	function addGigToMap(gig){
+// 		map.addMarker({
+// 			lat: gig.venue.latitude ,
+// 			lng:  gig.venue.longitude,
+// 			title: gig.venue.name ,
+// 			click: function(e) {
+// 				alert('you clicked it');
+// 			}
+// 		})
+// 	}
+// }
 
 
 //end jQuery call
