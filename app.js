@@ -714,7 +714,7 @@ const dummyJson = $.parseJSON(`[
 ]`); // sample stuff 
 displayGigsList(dummyJson)
 createMap(dummyJson)
-console.log(dummyJson);	
+// console.log(dummyJson);	
 }
 
 //end jQuery call
