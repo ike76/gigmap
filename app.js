@@ -17,6 +17,8 @@ $(function(){
 // }
 
 // searchbox listener
+const store = {} // global store variable
+
 $('.artistSearch').on('submit', function(event){
 	event.preventDefault();
 	let queryBox = $(this).find('#artistSearchBox');
@@ -25,13 +27,30 @@ $('.artistSearch').on('submit', function(event){
 	handleSearch(artistQuery); //hereafter known as 'aq'
 })
 
+//gig list listener
+$('.gig-list').on('click', 'h4', function(event){
+	let gigId = $(this).attr('gigId');
+	openLightbox(gigId);
+})
 
-function handleSearch(aq){
-	callBandsInTown(aq);
+
+function openLightbox(gigId){
+	$.featherlight($('#mylightbox'))
 }
 
+function handleSearch(aq){
+	getArtistEvents(aq);
+	getArtistInfo(aq);
+}
 
-function callBandsInTown(aq){
+function getArtistInfo(aq){
+	let app_id = 'iketown';
+	let biturl = `https://rest.bandsintown.com/artists/${aq}`
+	$.getJSON(biturl, {app_id: app_id}, (data) => { store.artistInfo = data} )
+	console.log(store.artistInfo);
+}
+
+function getArtistEvents(aq){
 	let app_id = 'iketown';
 	let biturl = `https://rest.bandsintown.com/artists/${aq}/events`
 	$.getJSON(biturl, {app_id: app_id}, function(json, textStatus) {
@@ -58,8 +77,8 @@ function formatGig(gigObj){
 	let date = moment(gigObj.datetime);
 	let country = (gigObj.venue.country === "United States") ? "" : `, ${gigObj.venue.country}`;
 
-	return `<li id="${gigObj.id}">
-				<a href="#"><h4>${cityName}, ${state}${country}</h4></a>
+	return `<li>
+				<a><h4 gigId="${gigObj.id}">${cityName}, ${state}${country}</h4></a>
 				<hr>
 				<p>${venueName}</p>
 				<p>${date.format('MMM Do, YYYY | h:mm a')}</p>

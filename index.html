@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Cantarell|Fjalla+One" rel="stylesheet">
 	<link href="https://cdn.rawgit.com/noelboss/featherlight/1.7.12/release/featherlight.min.css" type="text/css" rel="stylesheet" />
-
+	<link rel="stylesheet" href="./lib/css/featherlight.css">
 	<link rel="stylesheet" href="grid.css">
 	<link rel="stylesheet" href="main.css">
 </head>
@@ -21,7 +21,9 @@
 						<button type='submit'>GO!</button>
 					</fieldset>
 				</form>
-				
+				<a href="#" data-featherlight="#mylightbox">Open element in lightbox</a>
+				<!-- <div id="mylightbox" hidden>This div will be opened in a lightbox</div> -->
+
 				<h2 class='band-name'><!-- America --></h2>
 				<ul class="gig-list">
 
@@ -31,17 +33,23 @@
 				<div class="fixed-map">
 					<div id="map"></div>
 				</div>
+				<div class="lightbox-container" hidden>
+					<div id="mylightbox">
+						<h1>this will go in the lightbox!</h1>
+						<p>hello and welcome to the lightbox</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	<script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-  <script src="./lib/moment.js"></script>
+  <script src="./lib/js/moment.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnx0YDrh3CtagIOoyb9kIpmP13iq49wdE" ></script>
     <!-- <script src="./js/gmaps.min.js"></script> -->
     <script src="https://cdn.rawgit.com/noelboss/featherlight/1.7.12/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-
+	<script src="./lib/js/featherlight.js"></script>
 	<script src="app.js"></script>
 	<script>
 		

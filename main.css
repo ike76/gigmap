@@ -18,6 +18,7 @@ font-family: 'Cantarell', sans-serif;
 .gig-list h4:hover {
 	/*background-color: red;*/
 	color: red;
+	cursor: pointer;
 	/*font-size: 19px;*/
 }
 .gig-list hr {
