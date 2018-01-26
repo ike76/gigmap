@@ -76,6 +76,7 @@ function createMap(json){
 		position: uluru,
 		map: map
 	})
+	let marker2 = new google.maps.Marker({position: {lat: -25, lng: 131}, map: map})
 	let latLngArray = makeLatLngArray(json);
 	function makeLatLngArray(json){
 		let latLngArray = [];
