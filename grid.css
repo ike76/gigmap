@@ -3,7 +3,9 @@
   /*border: 1px #DCDCDC dotted;*/
 }
 
-
+.fixed-map{
+  /*position: fixed;*/
+}
 .row {
   /*max-width: 1000px;*/
   padding-left: 20px;

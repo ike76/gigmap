@@ -72,35 +72,49 @@ function createMap(json){
 		zoom: 4,
 		center: uluru
 	});
-	let marker = new google.maps.Marker({
-		position: uluru,
-		map: map
-	})
-	let marker2 = new google.maps.Marker({position: {lat: -25, lng: 131}, map: map})
-	let latLngArray = makeLatLngArray(json);
-	function makeLatLngArray(json){
-		let latLngArray = [];
-		json.forEach(gig=> latLngArray.push({lat: Number(gig.venue.latitude), lng: Number(gig.venue.longitude) }))
-		return latLngArray;
-	}
+	// let marker = new google.maps.Marker({
+	// 	position: uluru,
+	// 	map: map
+	// })
+	// let marker2 = new google.maps.Marker({position: {lat: -25, lng: 131}, map: map})
+	let bounds = new google.maps.LatLngBounds();
+
+	json.forEach(gig=> {
+		addGigToMap(gig);
+		bounds.extend({lat: Number(gig.venue.latitude), lng: Number(gig.venue.longitude) })
+	});
+	map.fitBounds(bounds);
+
+	// let latLngArray = makeLatLngArray(json);
+	
+	// function makeLatLngArray(json){
+	// 	let latLngArray = [];
+	// 	json.forEach(gig=> latLngArray.push({lat: Number(gig.venue.latitude), lng: Number(gig.venue.longitude) }))
+	// 	return latLngArray;
+	// }
 	// map.fitLatLngBounds(latLngArray); // make map the right size
 
-	// json.forEach(gig=> addGigToMap(gig));
 
 	// function drawPolyline(json){
 
 	// }
 	
-	// function addGigToMap(gig){
-	// 	map.addMarker({
-	// 		lat: gig.venue.latitude ,
-	// 		lng:  gig.venue.longitude,
-	// 		title: gig.venue.name ,
-	// 		click: function(e) {
-	// 			alert('you clicked it');
-	// 		}
-	// 	})
-	// }
+	function addGigToMap(gig){
+		let marker = new google.maps.Marker({
+			position: {
+				lat: Number(gig.venue.latitude),
+				lng:  Number(gig.venue.longitude)
+			},
+			map: map,
+		})
+		// map.addMarker({
+			
+		// 	title: gig.venue.name ,
+		// 	click: function(e) {
+		// 		alert('you clicked it');
+		// 	}
+		// })
+	}
 }
 // function createMap(json){
 // 	var map = new GMaps({
